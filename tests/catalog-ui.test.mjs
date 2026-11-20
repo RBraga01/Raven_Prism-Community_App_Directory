@@ -82,7 +82,7 @@ test("default state produces a clean shareable URL and active-filter test", () =
 test("insights count exact catalog evidence without invented traffic data", () => {
   const data=catalogInsights(apps);
   assert.equal(data.total,apps.length);
-  assert.equal(data.publicDemos,apps.filter(x=>x.demo_url).length);
+  assert.equal(data.additionalLinks,apps.filter(x=>x.demo_url).length);
   assert.equal(data.categoryCount,new Set(apps.map(x=>x.category)).size);
   assert.equal(data.creatorLabels,new Set(apps.map(x=>normalize(x.developer))).size);
   assert.equal(data.categories.reduce((s,c)=>s+c.count,0),apps.length);
