@@ -47,6 +47,21 @@ class PublicWebsiteTests(unittest.TestCase):
         self.assertIn('parsed.protocol !== "https:"', script)
         self.assertIn('type="module" src="./app.mjs"', html)
 
+    def test_header_prioritizes_directory_and_uses_no_unexplained_mark(self):
+        html = (ROOT / "docs/index.html").read_text(encoding="utf-8")
+        self.assertIn(
+            '<span class="brand-name">Community App Directory <small>Raven Prism</small></span>',
+            html,
+        )
+        self.assertIn(
+            'aria-label="Community App Directory for Raven Prism — home"',
+            html,
+        )
+        self.assertIn('<title>Community App Directory · Raven Prism</title>', html)
+        self.assertNotIn('class="brand-mark"', html)
+        self.assertNotIn('.brand-mark {', html)
+        self.assertNotIn('>R/</span>', html)
+
     def test_public_site_data_mirrors_approved_json(self):
         source = json.loads((ROOT / "data/apps.json").read_text(encoding="utf-8"))
         generated = json.loads((ROOT / "docs/apps.json").read_text(encoding="utf-8"))
