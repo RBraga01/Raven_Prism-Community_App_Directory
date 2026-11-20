@@ -1,0 +1,110 @@
+name: One-time cleanup of verified merged branches
+
+# Deliberately narrow, one-time push trigger; no PR execution, schedule
+# or manual dispatch. The job verifies every merge and SHA before deletion.
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/cleanup-merged-branches.yml'
+
+permissions:
+  contents: write
+  pull-requests: read
+
+concurrency:
+  group: reviewed-branch-pruning
+  cancel-in-progress: false
+
+jobs:
+  cleanup:
+    if: github.repository == 'RBraga01/Raven_Prism-Community_App_Directory' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - name: Verify merged refs before deletion
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          import json
+          import os
+          from urllib.parse import quote
+          from urllib.request import Request, urlopen
+
+          repo = "RBraga01/Raven_Prism-Community_App_Directory"
+          root = "https://api.github.com/repos/" + repo
+          # Only these exact branches can ever be deleted.
+          candidates = [
+              ("feature/discovery-search-and-insights", 1,
+               "5a914a1e41b88b89404a387748ebd656fcc172fb"),
+              ("fix/neutral-palette-category-reset-and-link-labels", 2,
+               "0fb6cd48cd77eabd8d6ec76ccc679ca7d83835e7"),
+              ("ui/header-hierarchy-no-symbol", 3,
+               "f74e9423fae4a580f99326fcbeee38b5d1cd2b5a"),
+              ("maintenance/prune-reviewed-merged-branches", 4, None),
+          ]
+          headers = {
+              "Accept": "application/vnd.github+json",
+              "Authorization": "Bearer " + os.environ["GITHUB_TOKEN"],
+              "X-GitHub-Api-Version": "2022-11-28",
+              "User-Agent": "RavenCommunityDirectoryBranchCleanup",
+          }
+          def api(method, path):
+              req = Request(root + path, headers=headers, method=method)
+              with urlopen(req, timeout=30) as response:
+                  data = response.read()
+                  return json.loads(data) if data else None
+          def fail(message):
+              raise RuntimeError("CLEANUP_BLOCKED: " + message)
+
+          metadata = api("GET", "")
+          if metadata.get("default_branch") != "main":
+              fail("Unexpected default branch")
+          main = api("GET", "/branches/main")
+          if not main.get("protected"):
+              fail("main must remain protected")
+          main_sha = main["commit"]["sha"]
+          names = {b["name"] for b in api("GET", "/branches?per_page=100")}
+          expected = {"main"} | {name for name, _, _ in candidates}
+          if names - expected:
+              fail("Unexpected branches: " + repr(sorted(names - expected)))
+          if len(names) >= 100:
+              fail("Branch list could be truncated")
+
+          # Complete ALL checks before deleting ANY branch.
+          ready = []
+          for name, number, pinned in candidates:
+              if name not in names:
+                  print("ALREADY_ABSENT: " + name)
+                  continue
+              branch = api("GET", "/branches/" + quote(name, safe="/"))
+              sha = branch["commit"]["sha"]
+              if branch.get("protected") or (pinned and sha != pinned):
+                  fail(name + " has unreviewed changes or is protected")
+              pr = api("GET", "/pulls/" + str(number))
+              if not pr.get("merged_at") or pr.get("state") != "closed":
+                  fail(name + " has no completed merge")
+              if (pr["head"]["ref"] != name
+                  or pr["head"]["sha"] != sha
+                  or pr["head"]["repo"]["full_name"] != repo
+                  or pr["base"]["ref"] != "main"):
+                  fail(name + " differs from reviewed PR")
+              merge_sha = pr.get("merge_commit_sha")
+              if not merge_sha:
+                  fail(name + " has no merge commit")
+              comparison = api("GET", "/compare/" + merge_sha + "..." + main_sha)
+              if (comparison.get("behind_by") != 0 or
+                  comparison.get("status") not in ("identical", "ahead")):
+                  fail(name + " merge commit is not part of main")
+              ready.append(name)
+              print("VERIFIED: " + name + " at " + sha[:12])
+          for name in ready:
+              api("DELETE", "/git/refs/heads/" + quote(name, safe="/"))
+              print("DELETED: " + name)
+          remaining = {b["name"] for b in api("GET", "/branches?per_page=100")}
+          if remaining != {"main"}:
+              fail("Unexpected remaining branches: " + repr(sorted(remaining)))
+          print("CLEANUP_OK: only protected main remains; deleted " + str(len(ready)) + " reviewed branches")
+          PY
