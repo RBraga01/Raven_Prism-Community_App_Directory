@@ -70,6 +70,17 @@ function updateControls() {
   elements.viewList.setAttribute("aria-pressed", String(state.view === "list"));
 }
 
+function supplementalLabel(url) {
+  try {
+    const path = new URL(url).pathname.toLowerCase();
+    if (path.includes("/releases/")) return "Release";
+    if (path.endsWith(".mp4")) return "Watch video";
+    if (url.includes("youtube.com") || url.includes("youtu.be")) return "Watch video";
+    if (url.includes("devpost.com")) return "Project page";
+  } catch { /* Validation prevents unsafe URLs in approved catalog entries. */ }
+  return "More details";
+}
+
 function createCard(app) {
   const card = create("article", "app-card");
   const top = create("div", "app-card-top");
@@ -83,7 +94,7 @@ function createCard(app) {
   const description = create("p", "description", app.description);
   const links = create("div", "card-links");
   links.append(publicLink("View source ↗", app.source_url));
-  if (app.demo_url) links.append(publicLink("Public demo ↗", app.demo_url));
+  if (app.demo_url) links.append(publicLink(supplementalLabel(app.demo_url) + " ↗", app.demo_url));
   card.append(top, h3, creator, description, links);
   return card;
 }
@@ -101,7 +112,7 @@ function renderActiveFilters() {
   if (state.q) chips.push(activeChip("Search: " + state.q, { q: "" }));
   if (state.category) chips.push(activeChip(state.category, { category: "" }));
   if (state.availability) chips.push(activeChip(state.availability, { availability: "" }));
-  if (state.demoOnly) chips.push(activeChip("Public demos", { demoOnly: false }));
+  if (state.demoOnly) chips.push(activeChip("Additional public link", { demoOnly: false }));
   elements.active.replaceChildren(...chips);
   elements.active.hidden = chips.length === 0;
 }
@@ -136,7 +147,7 @@ function renderInsights() {
   $("metric-apps").textContent = String(info.total);
   $("metric-categories").textContent = String(info.categoryCount);
   $("metric-creators").textContent = String(info.creatorLabels);
-  $("metric-demos").textContent = String(info.publicDemos);
+  $("metric-demos").textContent = String(info.additionalLinks);
 
   elements.categoryChart.replaceChildren();
   const max = Math.max(1, ...info.categories.map((item) => item.count));
@@ -152,7 +163,7 @@ function renderInsights() {
     fill.setAttribute("aria-hidden", "true");
     track.append(fill);
     b.append(caption, track);
-    b.addEventListener("click", () => updateState({ category: item.name }, true));
+    b.addEventListener("click", () => updateState({ category: item.name, q: "", availability: "", demoOnly: false, sort: "name" }, true));
     elements.categoryChart.append(b);
   }
 
