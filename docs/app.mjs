@@ -93,8 +93,8 @@ function createCard(app) {
   const creator = create("div", "creator", "By " + app.developer);
   const description = create("p", "description", app.description);
   const links = create("div", "card-links");
-  links.append(publicLink("View source ↗", app.source_url));
-  if (app.demo_url) links.append(publicLink(supplementalLabel(app.demo_url) + " ↗", app.demo_url));
+  links.append(publicLink("View source", app.source_url));
+  if (app.demo_url) links.append(publicLink(supplementalLabel(app.demo_url) + "", app.demo_url));
   card.append(top, h3, creator, description, links);
   return card;
 }
@@ -254,7 +254,9 @@ async function loadCatalog() {
     apps = data;
     loaded = true;
     const info = catalogInsights(apps);
-    elements.category.replaceChildren(create("option", "", "All categories"));
+    const allCategories = create("option", "", "All categories");
+    allCategories.value = "";
+    elements.category.replaceChildren(allCategories);
     for (const item of [...info.categories].sort((a, b) => a.name.localeCompare(b.name, "en"))) {
       const option = create("option", "", item.name + " (" + item.count + ")");
       option.value = item.name;
