@@ -5,7 +5,7 @@ import {
 
 const $ = (id) => document.getElementById(id);
 const elements = {
-  search: $("search"), clearSearch: $("clear-search"),
+  form: $("search-form"), search: $("search"), clearSearch: $("clear-search"), submitSearch: $("submit-search"),
   category: $("category-filter"), availability: $("availability-filter"),
   sort: $("sort-filter"), demo: $("demo-filter"),
   reset: $("reset-filters"), count: $("results-count"),
@@ -183,6 +183,10 @@ function renderInsights() {
 
 function setUpControls() {
   elements.search.addEventListener("input", () => updateState({ q: elements.search.value }));
+  elements.form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    updateState({ q: elements.search.value }, true);
+  });
   elements.clearSearch.addEventListener("click", () => {
     updateState({ q: "" });
     elements.search.focus();
