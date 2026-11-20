@@ -50,7 +50,7 @@ class PublicDocumentationTests(unittest.TestCase):
         self.assertIn("open to additional volunteer maintainers", contributing)
         self.assertIn("currently requires PRs and passing CI", contributing)
         self.assertIn("Once more trusted maintainers", contributing)
-        self.assertNotIn("guaranteed response time", contributing)
+        self.assertIn("No fixed team size, formal", contributing)
 
     def test_operational_documents_no_longer_look_like_prelaunch_gates(self):
         checklist = read("docs/PUBLIC_RELEASE_CHECKLIST.md")
