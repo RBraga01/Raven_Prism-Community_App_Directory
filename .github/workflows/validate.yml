@@ -23,6 +23,12 @@ jobs:
           python -O scripts/validate_catalog.py
       - name: Run adversarial and sync tests
         run: python -m unittest discover -s tests -v
+      - name: Verify interactive website JavaScript and catalog insights
+        run: |
+          node --version
+          node --check docs/catalog-core.mjs
+          node --check docs/app.mjs
+          node --test tests/catalog-ui.test.mjs
       - name: Verify hash-locked Google SDK can install on trusted main
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: |
