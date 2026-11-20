@@ -76,13 +76,13 @@ class PublicWebsiteTests(unittest.TestCase):
                       "--radius-surface: 16px", "--radius-control: 10px",
                       "--radius-tag: 8px"):
             self.assertIn(token, html)
-        self.assertFalse(re.findall(r"font-weight:\\s*\\d+", html))
-        self.assertFalse(re.findall(r"border-radius:\\s*\\d+px", html))
+        self.assertFalse(re.findall(r"font-weight:\s*\d+", html))
+        self.assertFalse(re.findall(r"border-radius:\s*\d+px", html))
         self.assertNotIn('style="', html)
 
     def test_placeholder_and_focus_contrast(self):
         html = (ROOT / "docs/index.html").read_text(encoding="utf-8")
-        placeholder = re.search(r'input::placeholder \\{ color: (#[0-9a-fA-F]{6})', html)
+        placeholder = re.search(r'input::placeholder \{ color: (#[0-9a-fA-F]{6})', html)
         focus = re.search(r'--focus: (#[0-9a-fA-F]{6})', html)
         self.assertIsNotNone(placeholder)
         self.assertIsNotNone(focus)
@@ -101,7 +101,7 @@ class PublicWebsiteTests(unittest.TestCase):
 
     def test_full_bleed_metrics_and_accessible_explainer(self):
         html = (ROOT / "docs/index.html").read_text(encoding="utf-8")
-        self.assertIn('<main>\\n    <section class="metrics-band"', html)
+        self.assertIn('<main>\n    <section class="metrics-band"', html)
         self.assertIn('<div class="container metrics">', html)
         self.assertIn('<details class="about-prism">', html)
         self.assertIn('<summary>What is Raven Prism?</summary>', html)
