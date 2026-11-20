@@ -1,5 +1,6 @@
 """Static GitHub Pages publishing, accessibility and safe-link safeguards."""
 import json
+import re
 import unittest
 from html.parser import HTMLParser
 from pathlib import Path
@@ -67,6 +68,59 @@ class PublicWebsiteTests(unittest.TestCase):
         self.assertNotIn("https://cdn.", html)
         self.assertNotIn("analytics.js", html)
         self.assertIn('src="./app.mjs"', html)
+
+    def test_design_tokens_use_only_reviewed_four_weights_and_three_radii(self):
+        html = (ROOT / "docs/index.html").read_text(encoding="utf-8")
+        for token in ("--weight-regular: 400", "--weight-medium: 500",
+                      "--weight-semibold: 650", "--weight-bold: 800",
+                      "--radius-surface: 16px", "--radius-control: 10px",
+                      "--radius-tag: 8px"):
+            self.assertIn(token, html)
+        self.assertFalse(re.findall(r"font-weight:\\s*\\d+", html))
+        self.assertFalse(re.findall(r"border-radius:\\s*\\d+px", html))
+        self.assertNotIn('style="', html)
+
+    def test_placeholder_and_focus_contrast(self):
+        html = (ROOT / "docs/index.html").read_text(encoding="utf-8")
+        placeholder = re.search(r'input::placeholder \\{ color: (#[0-9a-fA-F]{6})', html)
+        focus = re.search(r'--focus: (#[0-9a-fA-F]{6})', html)
+        self.assertIsNotNone(placeholder)
+        self.assertIsNotNone(focus)
+
+        def luminance(value):
+            parts = [int(value[i:i + 2], 16) / 255 for i in (1, 3, 5)]
+            red, green, blue = [
+                c / 12.92 if c <= 0.04045 else ((c + 0.055) / 1.055) ** 2.4
+                for c in parts
+            ]
+            return 0.2126 * red + 0.7152 * green + 0.0722 * blue
+
+        self.assertGreaterEqual(1.05 / (luminance(placeholder.group(1)) + 0.05), 4.5)
+        self.assertGreaterEqual(1.05 / (luminance(focus.group(1)) + 0.05), 3.0)
+        self.assertIn("outline: 3px solid var(--focus)", html)
+
+    def test_full_bleed_metrics_and_accessible_explainer(self):
+        html = (ROOT / "docs/index.html").read_text(encoding="utf-8")
+        self.assertIn('<main>\\n    <section class="metrics-band"', html)
+        self.assertIn('<div class="container metrics">', html)
+        self.assertIn('<details class="about-prism">', html)
+        self.assertIn('<summary>What is Raven Prism?</summary>', html)
+        self.assertIn('https://raven.computer/developer', html)
+        self.assertIn('class="kicker kicker--tight"', html)
+        self.assertIn('class="kicker search-label"', html)
+
+    def test_keyboard_and_touch_search_fallback(self):
+        html = (ROOT / "docs/index.html").read_text(encoding="utf-8")
+        js = (ROOT / "docs/app.mjs").read_text(encoding="utf-8")
+        self.assertIn('<form id="search-form"', html)
+        self.assertIn('id="submit-search"', html)
+        self.assertIn('type="submit">Search</button>', html)
+        self.assertIn('elements.form.addEventListener("submit"', js)
+        self.assertIn('event.preventDefault()', js)
+        self.assertIn('event.ctrlKey || event.metaKey', js)
+        self.assertIn('event.key.toLowerCase() === "k"', js)
+        self.assertIn('elements.search.focus()', js)
+
 
 
 if __name__ == "__main__":
