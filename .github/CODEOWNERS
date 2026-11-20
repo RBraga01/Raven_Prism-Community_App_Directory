@@ -1,0 +1,6 @@
+# Require review of automation, generated data and public publication surfaces.
+* @RBraga01
+/.github/workflows/ @RBraga01
+/scripts/ @RBraga01
+/data/ @RBraga01
+/docs/ @RBraga01

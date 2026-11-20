@@ -1,0 +1,222 @@
+[
+  {
+    "id": "agent-hud-raven",
+    "name": "Agent HUD (Raven)",
+    "category": "Productivity",
+    "developer": "RBraga01",
+    "description": "Quiet display for AI agent decision requests",
+    "source_url": "https://github.com/RBraga01/agent-hud/tree/master/platforms/raven",
+    "demo_url": "",
+    "availability": "Source code"
+  },
+  {
+    "id": "art-studio",
+    "name": "Art Studio",
+    "category": "Official examples",
+    "developer": "Raven Resonance",
+    "description": "Image reference viewer example",
+    "source_url": "https://github.com/RavenResonance/raven-starter-project/tree/main/examples/art_studio",
+    "demo_url": "",
+    "availability": "Official example"
+  },
+  {
+    "id": "blinksnap",
+    "name": "BlinkSnap",
+    "category": "Camera & vision",
+    "developer": "srcJin",
+    "description": "Photography concept controlled by double blink",
+    "source_url": "https://github.com/srcJin/raven-blink-snap",
+    "demo_url": "",
+    "availability": "Source code"
+  },
+  {
+    "id": "clear-cue",
+    "name": "Clear Cue",
+    "category": "Accessibility",
+    "developer": "JwongtheCodyBoy",
+    "description": "Social cue assistant using camera, microphone and AI",
+    "source_url": "https://github.com/JwongtheCodyBoy/raven-starter-project_realityhack2026",
+    "demo_url": "https://devpost.com/software/clear-cue",
+    "availability": "Source code"
+  },
+  {
+    "id": "counter-stopwatch",
+    "name": "Counter / Stopwatch",
+    "category": "Official examples",
+    "developer": "Raven Resonance",
+    "description": "Stopwatch starter example",
+    "source_url": "https://github.com/RavenResonance/raven-starter-project/tree/main/examples/counter",
+    "demo_url": "",
+    "availability": "Official example"
+  },
+  {
+    "id": "cue",
+    "name": "Cue",
+    "category": "Productivity",
+    "developer": "mjoisgreat",
+    "description": "Presentation cue cards and optional AI feedback",
+    "source_url": "https://github.com/mjoisgreat/Cue-raven",
+    "demo_url": "https://youtu.be/wn0i6_Btvk0",
+    "availability": "Source code"
+  },
+  {
+    "id": "doomed-prism",
+    "name": "DOOMed Prism",
+    "category": "Games",
+    "developer": "RBraga01",
+    "description": "Experimental gaze-driven native DOOM port",
+    "source_url": "https://github.com/RBraga01/DOOMed-Prism",
+    "demo_url": "",
+    "availability": "Source code"
+  },
+  {
+    "id": "dreamlens-gradient",
+    "name": "DreamLens / Gradient",
+    "category": "Developer tools",
+    "developer": "Jshengdev",
+    "description": "AI-assisted generator of personalized accessibility apps",
+    "source_url": "https://github.com/Jshengdev/Gradient",
+    "demo_url": "",
+    "availability": "Source code"
+  },
+  {
+    "id": "ease",
+    "name": "Ease",
+    "category": "Wellness",
+    "developer": "srcJin",
+    "description": "Gaze-led breaks and rest reminders",
+    "source_url": "https://github.com/srcJin/raven-ease",
+    "demo_url": "",
+    "availability": "Source code"
+  },
+  {
+    "id": "egogaze",
+    "name": "EgoGaze",
+    "category": "Research",
+    "developer": "srcJin",
+    "description": "Scene-camera and gaze dataset recording/export",
+    "source_url": "https://github.com/srcJin/raven-ego-gaze",
+    "demo_url": "",
+    "availability": "Source code"
+  },
+  {
+    "id": "fireworks-experience",
+    "name": "Fireworks Experience",
+    "category": "Creative & art",
+    "developer": "Amir Mohideen",
+    "description": "Interactive virtual fireworks launched with blink",
+    "source_url": "https://github.com/amirmohideen/raven-ar-glass-experiences-mit/tree/main/fireworks_experience",
+    "demo_url": "",
+    "availability": "Source code"
+  },
+  {
+    "id": "hello-world",
+    "name": "Hello World",
+    "category": "Official examples",
+    "developer": "Raven Resonance",
+    "description": "Minimal starter interface",
+    "source_url": "https://github.com/RavenResonance/raven-starter-project/tree/main/examples/hello_world",
+    "demo_url": "",
+    "availability": "Official example"
+  },
+  {
+    "id": "nail-ar",
+    "name": "Nail AR",
+    "category": "Guides & learning",
+    "developer": "jayasrisng",
+    "description": "Hands-free manicure steps, timer, camera preview and Sudoku",
+    "source_url": "https://github.com/jayasrisng/nail-AR",
+    "demo_url": "https://github.com/jayasrisng/nail-AR/blob/main/assets/demo/nail-ar-demo.mp4",
+    "availability": "Source code"
+  },
+  {
+    "id": "nevermore-halloween",
+    "name": "Nevermore Halloween",
+    "category": "Creative & art",
+    "developer": "RBraga01 / GlassPlay",
+    "description": "Interactive seasonal Halloween experience",
+    "source_url": "https://github.com/RBraga01/GlassPlay",
+    "demo_url": "https://github.com/RBraga01/GlassPlay/releases/tag/nevermore-v1.1.0",
+    "availability": "Downloadable release"
+  },
+  {
+    "id": "overblaster",
+    "name": "OverBlaster",
+    "category": "Games",
+    "developer": "OverLord Labs",
+    "description": "Space shooter with gaze aiming and voice-triggered firing",
+    "source_url": "https://github.com/OverLord-Labs/OverBlaster-Raven",
+    "demo_url": "",
+    "availability": "Source code"
+  },
+  {
+    "id": "r-eye-der",
+    "name": "R-EYE-DER",
+    "category": "Camera & vision",
+    "developer": "thejellyshroom",
+    "description": "Object detection and attention cue prototype",
+    "source_url": "https://github.com/thejellyshroom/r-eye-der",
+    "demo_url": "",
+    "availability": "Source code"
+  },
+  {
+    "id": "raven-muse-control",
+    "name": "Raven Muse Control",
+    "category": "Media",
+    "developer": "ImJustHenry",
+    "description": "Controls music playback through phone companion",
+    "source_url": "https://github.com/ImJustHenry/Raven-Muse-Control",
+    "demo_url": "",
+    "availability": "Source code"
+  },
+  {
+    "id": "raven-pet",
+    "name": "Raven Pet",
+    "category": "Companions",
+    "developer": "ofranken",
+    "description": "Pixel-art companion reacts to phone habits, walking and gaze",
+    "source_url": "https://github.com/ofranken/RavenPrismTamagotchi",
+    "demo_url": "https://youtu.be/6lmOFtocQfU",
+    "availability": "Source code"
+  },
+  {
+    "id": "raven-reach",
+    "name": "Raven Reach",
+    "category": "Accessibility",
+    "developer": "ImJustHenry",
+    "description": "Gaze-controlled communications and emergency demo flows",
+    "source_url": "https://github.com/ImJustHenry/Raven-Reach",
+    "demo_url": "",
+    "availability": "Source code"
+  },
+  {
+    "id": "simple-ai-app",
+    "name": "Simple AI App",
+    "category": "Official examples",
+    "developer": "Raven Resonance",
+    "description": "Camera/microphone AI starter example",
+    "source_url": "https://github.com/RavenResonance/raven-starter-project/tree/main/examples/simple_ai_app",
+    "demo_url": "",
+    "availability": "Official example"
+  },
+  {
+    "id": "snake",
+    "name": "Snake",
+    "category": "Games",
+    "developer": "Amir Mohideen",
+    "description": "Classic Snake controlled by gaze",
+    "source_url": "https://github.com/amirmohideen/raven-ar-glass-experiences-mit/tree/main/snake_game",
+    "demo_url": "",
+    "availability": "Source code"
+  },
+  {
+    "id": "webtoon-xr",
+    "name": "Webtoon XR",
+    "category": "Media",
+    "developer": "Shreyaa Dani",
+    "description": "Comic reader with eye scrolling and head parallax",
+    "source_url": "https://github.com/shreyaadani/WebtoonXR",
+    "demo_url": "",
+    "availability": "Source code"
+  }
+]

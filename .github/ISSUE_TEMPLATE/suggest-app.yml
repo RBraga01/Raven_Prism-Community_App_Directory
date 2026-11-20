@@ -1,0 +1,45 @@
+name: Suggest an app
+description: Propose a public Raven Prism or Raven Framework app for the directory
+title: "[App] "
+body:
+  - type: input
+    id: name
+    attributes:
+      label: App name
+      placeholder: Public project name
+    validations:
+      required: true
+  - type: input
+    id: creator
+    attributes:
+      label: Creator or team
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Public source URL
+      description: Public repository or creator/official project page; no private links.
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: What does it do?
+      description: Describe the app in your own words, without copying other websites.
+    validations:
+      required: true
+  - type: dropdown
+    id: availability
+    attributes:
+      label: Public availability
+      options:
+        - Source code
+        - Official example
+        - Downloadable release
+    validations:
+      required: true
+  - type: input
+    id: demo
+    attributes:
+      label: Public demo / release URL (optional)

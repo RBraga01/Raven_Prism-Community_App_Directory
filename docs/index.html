@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="An independent, community-maintained directory of Raven Prism applications, experiences and examples.">
+<title>Raven Prism · Community App Directory</title>
+<style>
+:root{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#171a27;background:#faf9f6;font-synthesis:none}
+*{box-sizing:border-box}body{margin:0}a{color:#30379a}a:hover{text-decoration-thickness:2px}
+.shell{max-width:1190px;margin:0 auto;padding:0 24px}
+header{padding:65px 0 45px;border-bottom:1px solid #dedde5;background:linear-gradient(120deg,#eeedfc,#faf9f6 60%)}
+.eyebrow{text-transform:uppercase;letter-spacing:.14em;font-weight:800;font-size:12px;color:#5654a5}
+h1{font-size:clamp(2.1rem,5vw,4rem);max-width:820px;line-height:1.05;letter-spacing:-.05em;margin:12px 0 22px}
+.lead{font-size:1.18rem;line-height:1.65;max-width:740px;color:#535769;margin:0 0 18px}
+.small{font-size:.91rem;color:#6d7180;line-height:1.65}
+main{padding-top:33px;padding-bottom:60px}
+.controls{display:grid;grid-template-columns:1fr 230px;gap:12px;margin:18px 0 18px}
+label{display:block;font-size:.82rem;font-weight:700;margin-bottom:6px}
+input,select{border:1px solid #c8c8d3;border-radius:10px;background:#fff;color:#171a27;padding:13px 14px;width:100%;font:inherit}
+input:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid #a6a8ea;outline-offset:3px}
+#count{font-size:.94rem;color:#656876;margin:10px 0 20px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px}
+.card{min-height:250px;background:#fff;border:1px solid #e3e1e8;border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:11px;box-shadow:0 4px 14px rgba(29,31,60,.025)}
+.card h2{font-size:1.24rem;letter-spacing:-.02em;line-height:1.25;margin:0}
+.card p{margin:0;line-height:1.55;color:#535969;font-size:.95rem}
+.creator{font-size:.85rem;color:#737587}
+.category{font-size:.77rem;font-weight:700;letter-spacing:.02em;color:#3b3c77}
+.links{display:flex;gap:15px;flex-wrap:wrap;margin-top:auto;padding-top:12px}
+.links a{font-size:.9rem;font-weight:700}
+.status{font-size:.78rem;color:#586070;border-top:1px solid #eae9ef;padding-top:10px}
+footer{padding:27px 0 45px;border-top:1px solid #dedde5;color:#616474;font-size:.91rem}
+footer a{margin-right:18px}
+@media(max-width:650px){.controls{grid-template-columns:1fr}header{padding:44px 0 28px}.shell{padding:0 18px}}
+@media(prefers-reduced-motion:no-preference){.card{transition:transform .14s ease,box-shadow .14s ease}.card:hover{transform:translateY(-2px);box-shadow:0 8px 26px #26264c16}}
+</style>
+</head>
+<body>
+<header><div class="shell">
+<div class="eyebrow">Independent Raven developer community</div>
+<h1>Discover what's being built for Raven Prism.</h1>
+<p class="lead">A community-maintained collection of apps, creative experiments, official starter examples and public releases. Explore the ideas and follow their original creators.</p>
+<p class="small"><strong>Independent directory.</strong> Not affiliated with Raven Resonance. Listings are not guarantees of safety, hardware compatibility or commercial availability.</p>
+</div></header>
+<main class="shell">
+<div class="controls">
+<div><label for="search">Search applications</label><input id="search" placeholder="Try games, camera, gaze, AI…" autocomplete="off"></div>
+<div><label for="category">Category</label><select id="category"><option value="">All categories</option></select></div>
+</div>
+<div id="count" aria-live="polite">Loading public listings…</div>
+<section id="cards" class="cards" aria-label="Application directory"></section>
+<noscript>This directory requires JavaScript for search. View the source catalog in the project's data/apps.csv file.</noscript>
+</main>
+<footer><div class="shell">
+<p><strong>Created for the community, independently maintained.</strong> Follow the source links to review authors' instructions, licenses and supported platforms.</p>
+<a href="https://github.com/RBraga01/Raven_Prism-Community_App_Directory#readme">Project</a><a href="https://github.com/RBraga01/Raven_Prism-Community_App_Directory/blob/main/CONTRIBUTING.md">Contribute</a><a href="https://raw.githubusercontent.com/RBraga01/Raven_Prism-Community_App_Directory/main/data/apps.csv">CSV catalog</a><a href="https://github.com/RBraga01/Raven_Prism-Community_App_Directory/blob/main/docs/PUBLICATION_POLICY.md">Editorial policy</a>
+</div></footer>
+<script>
+"use strict";
+const search=document.getElementById("search");
+const category=document.getElementById("category");
+const cards=document.getElementById("cards");
+const counter=document.getElementById("count");
+let apps=[];
+function textNode(tag,content,cls){
+ const el=document.createElement(tag);el.textContent=content;if(cls)el.className=cls;return el;
+}
+function link(text,url){
+ const a=document.createElement("a");a.textContent=text;a.href=url;a.target="_blank";a.rel="noopener noreferrer";return a;
+}
+function render(){
+ const q=search.value.trim().toLowerCase();
+ const selected=category.value;
+ const result=apps.filter(a=>(!selected||a.category===selected)&&
+  (!q||[a.name,a.description,a.category,a.developer].some(s=>s.toLowerCase().includes(q))));
+ cards.replaceChildren();
+ result.forEach(a=>{
+  const card=textNode("article","","card");
+  card.append(textNode("div",a.category,"category"),textNode("h2",a.name),
+   textNode("div","By "+a.developer,"creator"),textNode("p",a.description));
+  const links=textNode("div","","links");
+  links.append(link("Project source",a.source_url));
+  if(a.demo_url)links.append(link("Public demo",a.demo_url));
+  card.append(links,textNode("div",a.availability,"status"));
+  cards.append(card);
+ });
+ counter.textContent=result.length+" of "+apps.length+" public-source listings";
+ if(!result.length) cards.append(textNode("p","No matching applications. Try another search."));
+}
+fetch("./apps.json").then(r=>{if(!r.ok)throw new Error("catalog unavailable");return r.json()})
+ .then(data=>{
+  apps=data;
+  const cats=[...new Set(data.map(a=>a.category))].sort((a,b)=>a.localeCompare(b));
+  cats.forEach(c=>{const o=document.createElement("option");o.value=c;o.textContent=c;category.append(o)});
+  render();
+ }).catch(()=>{counter.textContent="Could not load the directory. See the repository's data/apps.json catalog.";});
+search.addEventListener("input",render);category.addEventListener("change",render);
+</script>
+</body>
+</html>
