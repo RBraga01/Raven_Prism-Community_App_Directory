@@ -18,6 +18,18 @@ Submit suggestions through issues or PRs; **do not edit Google Sheets**. A publi
 
 Only add items for Raven Prism or explicit Raven Framework projects. A clone, fork or rewrite is not automatically a different app. Where multiple distinct experiences live in one repository, they may be listed separately.
 
+## PR and issue descriptions
+
+Describe the specific change, the factual reason for it and its test evidence.
+Keep the public discussion self-contained and focused on this directory.
+Do **not** cite, compare or attribute the directory's design choices to
+unrelated repositories or websites consulted as examples.
+
+This rule does not prohibit source citations for a new application: its
+creator's public project link and accurate attribution are required for
+catalog verification. Do not include private research notes or unsupported
+claims in discussions.
+
 ## Public links and safe formatting
 
 Only reviewed HTTPS destinations can enter the catalog. If a legitimate
