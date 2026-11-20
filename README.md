@@ -1,14 +1,24 @@
-# Raven Prism Community App Directory
+# Community App Directory
+### Raven Prism
 
-**An independent, community-maintained directory of software built for Raven Prism.**
+Find applications, creative experiments and official examples built for Raven Prism. **Independent and community-maintained** — a directory of public links, not an app store.
 
-> Not affiliated with, endorsed by, or maintained by Raven Resonance. This is a directory of links, **not** an app store, an official compatibility list, or a quality certification.
+![Platform: Raven Prism](https://img.shields.io/badge/Platform-Raven%20Prism-3B5449?style=flat-square)
+![Independent: Community directory](https://img.shields.io/badge/Independent-Community%20directory-54685B?style=flat-square)
+![Catalog: Public source links](https://img.shields.io/badge/Catalog-Public%20source%20links-59665D?style=flat-square)
+![Directory code: MIT](https://img.shields.io/badge/Directory%20code-MIT-707A70?style=flat-square)
 
-## Browse
+**[Explore the searchable website](https://rbraga01.github.io/Raven_Prism-Community_App_Directory/)** · **[View the Google Sheet](https://docs.google.com/spreadsheets/d/1zpmI-z8rMLl50vsgDA0O8s4FfXIWPjRvKly5hzH-t14/edit)** · **[Suggest an application](.github/ISSUE_TEMPLATE/suggest-app.yml)** · **[How to contribute](CONTRIBUTING.md)**
 
-Browse individually identified applications with links to their public sources. This is not a claim about the total number of Raven applications. Event-created apps may not have public repositories or downloadable releases. Two experiences may share one repository.
+> **Independent project.** Not affiliated with or endorsed by Raven Resonance. Listings are not verified hardware compatibility, security certifications or recommendations to install software.
 
-### Current directory
+## Explore the directory
+
+Start with the **[website](https://rbraga01.github.io/Raven_Prism-Community_App_Directory/)** to search by application, creator or feature, filter categories and availability, and follow links to the original authors.
+
+The alphabetical table below is a readable overview. Some entries are official starter examples; others are community projects, demonstrations or downloadable releases. Public source code does **not** necessarily mean an app is ready to install.
+
+### Application listings
 
 <!-- BEGIN GENERATED APPS -->
 | Application | Category | Developer | Public availability |
