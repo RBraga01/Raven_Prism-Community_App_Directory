@@ -7,8 +7,12 @@ IMPORTDATA on the same table.
 Source catalog: [data/apps.json](../data/apps.json)
 Public Sheet: https://docs.google.com/spreadsheets/d/1zpmI-z8rMLl50vsgDA0O8s4FfXIWPjRvKly5hzH-t14/edit
 
-**Automatic synchronization is not live until the one-time account setup succeeds.**
-Until a real workflow run reports SYNC_OK, do not claim a working scheduled mirror.
+**Operational status:** The GitHub Actions publisher has been configured and
+has completed successful synchronization runs. GitHub is the editable source;
+the public Sheet remains a read-only mirror. For freshness or incident checks,
+inspect the most recent relevant [sync workflow](https://github.com/RBraga01/Raven_Prism-Community_App_Directory/actions/workflows/sync-google-sheet.yml)
+run and confirm `SYNC_OK`. A previous success does not guarantee every
+future run will succeed.
 
 ## Events
 
@@ -22,26 +26,32 @@ Until a real workflow run reports SYNC_OK, do not claim a working scheduled mirr
 
 Unverified suggestions do NOT become approved entries until merged.
 Issue/PR titles are never mirrored into the public spreadsheet.
-When the GitHub repository is private, pending issue/PR metadata is not exported.
+Private forks may suppress pending issue/PR metadata; this published directory accepts public suggestions.
 Individual app verification dates are intentionally omitted.
 
-## One-time setup required from the repository owner
+## Credential maintenance and recovery
 
-The current GitHub connector cannot set GitHub Actions secrets, and the owner
-must approve an external service account receiving Editor access to the Sheet.
+The dedicated Google service-account credential is managed by the repository
+owner and is stored **only** as the GitHub Actions secret
+`GOOGLE_SHEETS_CREDENTIALS_JSON`. Never commit the JSON, post it in an issue
+or PR, or copy it into CI logs.
 
-1. In a Google Cloud project, enable the Google Sheets API and create a
-   dedicated service account. It needs no project-wide IAM roles.
-2. Create a JSON credential. Keep the key strictly private.
-3. Share only this spreadsheet with that service account's client_email as
-   **Editor**. Keep public Anyone-with-link sharing as **Viewer**.
-4. In GitHub: Settings → Secrets and variables → Actions → New repository secret.
-   Set the exact name GOOGLE_SHEETS_CREDENTIALS_JSON and paste the JSON.
-5. Run Actions → Sync community directory to Google Sheets → Run workflow.
-   Confirm SYNC_OK and verify the Apps tab and source hyperlinks.
-6. Review the repository history, rules and CI before changing GitHub visibility.
+If the credential must be replaced or rotated:
 
-Without step 4, the sync workflow **fails visibly** instead of pretending success.
+1. Create or rotate a dedicated service-account key in the owner's Google
+   Cloud project. The Google Sheets API must remain enabled.
+2. Keep the service account's **Editor** access scoped to this spreadsheet
+   only. Keep anonymous visitors at **Viewer**, not Editor.
+3. Replace the GitHub Actions secret at
+   **Settings → Secrets and variables → Actions** using the exact name
+   `GOOGLE_SHEETS_CREDENTIALS_JSON`. Never paste its value into discussions.
+4. Manually run **Actions → Sync community directory to Google Sheets**.
+   Confirm `SYNC_OK`, alphabetical entries and working source hyperlinks.
+5. After successful verification, deactivate the superseded key.
+
+If the secret is absent or invalid, synchronization **fails visibly**.
+The source catalog in GitHub remains authoritative and should not be edited
+through Google Sheets.
 
 ## Security model
 
@@ -73,5 +83,6 @@ project uses the service-account writer as its **only** sync implementation.
 ## Public document identity
 
 Even Viewer-only documents may display their owner's public Google profile.
-For identity separation, use a publication account before promoting the
-directory widely. Anonymous browser verification is still required.
+Before wider promotion or an ownership change, inspect anonymous access and
+confirm the visible identity is acceptable. Changing the account must not
+silently grant public editing access.
