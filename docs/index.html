@@ -6,6 +6,10 @@
   <meta name="color-scheme" content="light">
   <meta name="theme-color" content="#f7f8fc">
   <meta name="description" content="Explore community-made Raven Prism apps. Search projects, filter by use case or availability and discover creators. Independent, not an official app store.">
+  <meta property="og:title" content="Raven Prism Community App Directory">
+  <meta property="og:description" content="Discover apps, examples and creative experiments built for Raven Prism.">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://rbraga01.github.io/Raven_Prism-Community_App_Directory/">
   <title>Explore apps · Raven Prism Community Directory</title>
   <style>
     :root {
@@ -228,7 +232,7 @@
         <span class="keycap" aria-hidden="true">Ctrl K</span>
         <button id="clear-search" class="small-btn" type="button" hidden>Clear</button>
       </div>
-      <div class="quick-search" aria-label="Popular search topics">
+      <div class="quick-search" aria-label="Quick search topics">
         <span>Try</span>
         <button type="button" data-search="gaze">Gaze</button>
         <button type="button" data-search="camera">Camera</button>
@@ -245,7 +249,7 @@
         <div class="metric"><strong id="metric-apps">—</strong><span>Listed experiences</span></div>
         <div class="metric"><strong id="metric-categories">—</strong><span>Categories</span></div>
         <div class="metric"><strong id="metric-creators">—</strong><span>Creator / team labels</span></div>
-        <div class="metric"><strong id="metric-demos">—</strong><span>Public demo links</span></div>
+        <div class="metric"><strong id="metric-demos">—</strong><span>Additional public links</span></div>
       </section>
 
       <section id="directory" class="section" aria-labelledby="directory-title">
@@ -268,7 +272,7 @@
             <option value="category">Category · A–Z</option>
             <option value="creator">Creator · A–Z</option>
           </select></div>
-          <label class="toggle" for="demo-filter"><input id="demo-filter" type="checkbox"> Has public demo</label>
+          <label class="toggle" for="demo-filter"><input id="demo-filter" type="checkbox"> Has additional link</label>
         </div>
         <div class="toolbar">
           <div id="results-count" class="results-count" role="status" aria-live="polite">Loading the directory…</div>
@@ -298,7 +302,7 @@
         <div class="insights-grid">
           <div class="insight-panel">
             <h3>Applications by category</h3>
-            <p>Select a category to explore its listings.</p>
+            <p>Select a category to explore all its listings.</p>
             <div id="category-chart" class="bar-list" aria-label="Applications by category"></div>
           </div>
           <div class="insight-panel">
