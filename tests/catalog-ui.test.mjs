@@ -122,3 +122,18 @@ test("all filters have labels, loading state and accessible clear/retry controls
   assert.match(appHtml,/aria-busy="true"/);
   assert.match(appHtml,/Skip to applications/);
 });
+
+test("All categories resets to the unfiltered catalog and uses an empty option value", () => {
+  const games = filterCatalog(apps, { ...DEFAULT_STATE, category: "Games" });
+  assert.ok(games.length > 0 && games.length < apps.length);
+  const reset = filterCatalog(apps, { ...DEFAULT_STATE, category: "" });
+  assert.deepEqual(reset.map(app => app.id), filterCatalog(apps, DEFAULT_STATE).map(app => app.id));
+  assert.match(appScript, /allCategories\.value\s*=\s*""/);
+  assert.match(appScript, /elements\.category\.replaceChildren\(allCategories\)/);
+});
+
+test("External link labels do not show the unwanted arrow glyph", () => {
+  assert.doesNotMatch(appScript + appHtml, /\u2197/);
+  assert.match(appScript, /"View source"/);
+  assert.match(appHtml, /https:\/\/github\.com\/RBraga01\/Raven_Prism-Community_App_Directory/);
+});
