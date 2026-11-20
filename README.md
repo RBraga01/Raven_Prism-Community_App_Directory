@@ -39,7 +39,7 @@ Browse individually identified applications with links to their public sources. 
 
 ### Other ways to browse
 
-- **Searchable website:** [docs/index.html](docs/index.html). Enable GitHub Pages from the `docs/` directory **only after maintainer review**.
+- **Community website:** [Raven Prism Community App Directory](https://rbraga01.github.io/Raven_Prism-Community_App_Directory/) — multi-term search, category/availability filters, demos-only view, sorting, shareable filtered links and catalog-derived insights. The site loads [docs/apps.json](docs/apps.json) and adds no tracking.
 - **Machine-readable catalog:** [JSON](data/apps.json) · [CSV](data/apps.csv).
 - **Unverified discovery leads:** [docs/UNVERIFIED_LEADS.md](docs/UNVERIFIED_LEADS.md).
 - **Google Sheets mirror:** [Raven Prism Community App Directory](https://docs.google.com/spreadsheets/d/1zpmI-z8rMLl50vsgDA0O8s4FfXIWPjRvKly5hzH-t14/edit) — same approved entries, A–Z, with short clickable links. The Sheet is generated from the approved GitHub catalog by the [sync workflow](docs/SHEETS_SYNC.md); a fresh repository needs its own Actions credential.

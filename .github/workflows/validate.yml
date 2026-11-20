@@ -23,11 +23,29 @@ jobs:
           python -O scripts/validate_catalog.py
       - name: Run adversarial and sync tests
         run: python -m unittest discover -s tests -v
+      - name: Verify interactive website JavaScript and catalog insights
+        run: |
+          node --version
+          node --check docs/catalog-core.mjs
+          node --check docs/app.mjs
+          node --test tests/catalog-ui.test.mjs
       - name: Verify hash-locked Google SDK can install on trusted main
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: |
           python -m pip install --require-hashes -r requirements-sheet-sync.lock
           python -c "from google.oauth2 import service_account; from googleapiclient.discovery import build; print('IMPORT_OK')"
+      - name: Upload testable static website preview for PR review
+        if: github.event_name == 'pull_request'
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: raven-directory-site-preview
+          path: |
+            docs/index.html
+            docs/app.mjs
+            docs/catalog-core.mjs
+            docs/apps.json
+          retention-days: 7
+          if-no-files-found: error
       - name: Verify generated views are committed
         run: |
           python scripts/build_site.py
