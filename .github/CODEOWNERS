@@ -1,4 +1,5 @@
-# Require review of automation, generated data and public publication surfaces.
+# Ownership and review routing for directory files.
+# Enforced approvals depend on the active main ruleset and available maintainers.
 * @RBraga01
 /.github/workflows/ @RBraga01
 /scripts/ @RBraga01

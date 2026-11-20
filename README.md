@@ -49,14 +49,14 @@ The alphabetical table below is a readable overview. Some entries are official s
 
 ### Other ways to browse
 
-- **Community website:** [Raven Prism Community App Directory](https://rbraga01.github.io/Raven_Prism-Community_App_Directory/) — multi-term search, category/availability filters, demos-only view, sorting, shareable filtered links and catalog-derived insights. The site loads [docs/apps.json](docs/apps.json) and adds no tracking.
+- **Community website:** [Raven Prism Community App Directory](https://rbraga01.github.io/Raven_Prism-Community_App_Directory/) — multi-term search, category/availability filters, an additional-links filter (videos, releases or project pages), sorting, shareable filtered links and catalog-derived insights. The site loads [docs/apps.json](docs/apps.json) and adds no tracking.
 - **Machine-readable catalog:** [JSON](data/apps.json) · [CSV](data/apps.csv).
 - **Unverified discovery leads:** [docs/UNVERIFIED_LEADS.md](docs/UNVERIFIED_LEADS.md).
-- **Google Sheets mirror:** [Raven Prism Community App Directory](https://docs.google.com/spreadsheets/d/1zpmI-z8rMLl50vsgDA0O8s4FfXIWPjRvKly5hzH-t14/edit) — same approved entries, A–Z, with short clickable links. The Sheet is generated from the approved GitHub catalog by the [sync workflow](docs/SHEETS_SYNC.md); a fresh repository needs its own Actions credential.
+- **Google Sheets mirror:** [Raven Prism Community App Directory](https://docs.google.com/spreadsheets/d/1zpmI-z8rMLl50vsgDA0O8s4FfXIWPjRvKly5hzH-t14/edit) — same approved entries, A–Z, with short clickable links. The Sheet is a read-only mirror of the approved GitHub catalog, maintained by the [sync workflow](docs/SHEETS_SYNC.md).
 
 ## Contribute
 
-Know of an application that is missing? [Suggest an app](.github/ISSUE_TEMPLATE/suggest-app.yml) or open a pull request updating `data/apps.json`. See [CONTRIBUTING.md](CONTRIBUTING.md) and the [data schema](docs/SCHEMA.md).
+Know of an application that is missing? [Suggest an app](https://github.com/RBraga01/Raven_Prism-Community_App_Directory/issues/new/choose) or open a pull request updating `data/apps.json`. See [CONTRIBUTING.md](CONTRIBUTING.md), the [local development guide](docs/DEVELOPMENT.md) and the [data schema](docs/SCHEMA.md).
 
 ## What the availability labels mean
 
@@ -70,7 +70,7 @@ We do not assign performance, safety, compatibility or on-device verification ra
 
 This repository hosts original catalog descriptions and links, not copies of third-party projects. The Raven Framework has its own separate proprietary license. Application code, game assets, comics, audio, videos, models and trademarks remain under their respective owners' terms. Read the [publication policy](docs/PUBLICATION_POLICY.md).
 
-Before making this repository public, complete the [publication checklist](docs/PUBLIC_RELEASE_CHECKLIST.md), including GitHub branch protections, anonymous access verification and one successful Google Sheets synchronization.
+For ongoing safety and operational checks, see the [public release and maintenance checklist](docs/PUBLIC_RELEASE_CHECKLIST.md).
 
 ## Security and community policy
 
@@ -78,21 +78,23 @@ See [SECURITY.md](SECURITY.md), [community conduct](CODE_OF_CONDUCT.md),
 [CONTRIBUTING.md](CONTRIBUTING.md) and [NOTICE.md](NOTICE.md) for the
 security reporting process, submission rules and external licenses.
 
-## Publishing and governance
+## Maintenance and governance
 
-The directory is maintained from the reviewed GitHub catalog. Public launch
-requires a protected `main` branch, a successful CI run, the Google Sheets
-publisher's repository secret and an enabled GitHub Pages site. Follow the
-[public-release checklist](docs/PUBLIC_RELEASE_CHECKLIST.md) and the
-[importable main ruleset](docs/release/main-ruleset.json).
+The directory is publicly available and currently maintained by a volunteer.
+**Additional maintainers are welcome if community members are willing to help**
+with source verification, reviews, moderation or upkeep. Start with an issue
+or a pull request; see the [maintainer and contribution process](CONTRIBUTING.md).
+Maintainer permissions are granted deliberately, not automatically.
 
-## Maintainer workflow
+The protected `main` branch requires a pull request and the `catalog` check.
+There are currently no mandatory independent approvals while the project has
+one maintainer; the [branch ruleset](docs/release/main-ruleset.json) can be
+strengthened as trusted maintainers join.
 
-```bash
-python scripts/build_site.py
-python scripts/validate_catalog.py
-```
+## Development and maintenance
 
-Keep `docs/apps.json`, `data/apps.csv` and the generated README table in sync with `data/apps.json`.
+To run the site, edit the catalog and execute its tests locally, use
+[docs/DEVELOPMENT.md](docs/DEVELOPMENT.md). The authoritative catalog is
+`data/apps.json`; generated README, CSV and website data must remain in sync.
 
 **Independent community project. No affiliation with Raven Resonance.**

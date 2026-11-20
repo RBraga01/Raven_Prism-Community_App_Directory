@@ -14,7 +14,7 @@ Include:
 
 The public directory and Google Sheet are **always alphabetical by application name**. Run `python scripts/build_site.py` after changing the JSON; it rewrites the canonical JSON, CSV, README table, and website data in A–Z order.
 
-Submit suggestions through issues or PRs; **do not edit Google Sheets**. A public issue/PR can appear in the Sheet's separate *Community suggestions* tab as awaiting review after synchronization is configured. The approved *Apps* tab updates only when a validated catalog change is merged into `main`.
+Submit suggestions through issues or PRs; **do not edit Google Sheets**. A public issue/PR can appear in the Sheet's separate *Community suggestions* tab as awaiting review after the trusted synchronization workflow runs. The approved *Apps* tab updates only when a validated catalog change is merged into `main`.
 
 Only add items for Raven Prism or explicit Raven Framework projects. A clone, fork or rewrite is not automatically a different app. Where multiple distinct experiences live in one repository, they may be listed separately.
 
@@ -45,8 +45,34 @@ and spreadsheet formulas. Never bypass those checks.
 - Do not post credentials, device data, internal project documents, private repositories, personal contacts, or copyrighted assets.
 - Do not add proprietary SDK files or downloadable copyrighted comics.
 
-## Review
-The maintainer verifies sources, duplicate entries, availability wording and potential licensing issues before merging. Submission does not guarantee listing. Reviews and removal requests are welcome.
+## Review and community maintainers
+
+The current maintainer reviews primary sources, duplicate entries, availability
+wording, licensing and changes to the directory before merging. Submission does
+not guarantee listing. Corrections and removal requests are welcome through
+GitHub issues; report vulnerabilities privately through [SECURITY.md](SECURITY.md).
+
+**This project is open to additional volunteer maintainers** when interested,
+trusted contributors are available. Possible tasks include checking public
+sources, triaging suggestions, reviewing PRs, maintaining tests and supporting
+the website or spreadsheet mirror.
+
+Anyone can start by suggesting an app, reporting a correction or submitting a
+focused PR. Community members interested in helping regularly can open a
+discussion issue to describe the responsibilities they would like to take on.
+The current maintainer evaluates the contribution history and the practical
+need before delegating repository permissions. No fixed team size, formal
+application process or guaranteed response time is required.
+
+The protected `main` branch currently requires PRs and passing CI, but not an
+independent approval. Once more trusted maintainers can actually review work,
+the repository owner can require approvals and CODEOWNER reviews. GitHub access
+must not be shared simply because someone opens an issue.
+
+## Local development
+
+See [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md) for a short setup guide,
+website preview, catalog generation and the Python/JavaScript test commands.
 
 ## Refresh generated files
 ```bash
