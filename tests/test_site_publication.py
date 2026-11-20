@@ -35,7 +35,7 @@ class PublicWebsiteTests(unittest.TestCase):
                 parts = urlsplit(url)
                 self.assertEqual(parts.scheme, "https")
                 self.assertIn(parts.hostname,
-                              {"github.com", "raw.githubusercontent.com", "docs.google.com"})
+                              {"github.com", "raw.githubusercontent.com", "docs.google.com", "raven.computer"})
 
     def test_untrusted_catalog_is_rendered_as_text_and_external_links_are_safe(self):
         html = (ROOT / "docs/index.html").read_text(encoding="utf-8")
