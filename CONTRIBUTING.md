@@ -14,7 +14,7 @@ Include:
 
 The public directory and Google Sheet are **always alphabetical by application name**. Run `python scripts/build_site.py` after changing the JSON; it rewrites the canonical JSON, CSV, README table, and website data in A–Z order.
 
-Submit suggestions through issues or PRs; **do not edit Google Sheets**. A public issue/PR can appear in the Sheet's separate *Community suggestions* tab as awaiting review after synchronization is configured. The approved *Apps* tab updates only when a validated catalog change is merged into `main`.
+Submit suggestions through issues or PRs; **do not edit Google Sheets**. A public issue/PR can appear in the Sheet's separate *Community suggestions* tab as awaiting review after the trusted synchronization workflow runs. The approved *Apps* tab updates only when a validated catalog change is merged into `main`.
 
 Only add items for Raven Prism or explicit Raven Framework projects. A clone, fork or rewrite is not automatically a different app. Where multiple distinct experiences live in one repository, they may be listed separately.
 
