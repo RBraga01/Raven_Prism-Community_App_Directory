@@ -8,7 +8,7 @@ Find applications, creative experiments and official examples built for Raven Pr
 ![Catalog: Public source links](https://img.shields.io/badge/Catalog-Public%20source%20links-59665D?style=flat-square)
 ![Directory code: MIT](https://img.shields.io/badge/Directory%20code-MIT-707A70?style=flat-square)
 
-**[Explore the searchable website](https://rbraga01.github.io/Raven_Prism-Community_App_Directory/)** · **[View the Google Sheet](https://docs.google.com/spreadsheets/d/1zpmI-z8rMLl50vsgDA0O8s4FfXIWPjRvKly5hzH-t14/edit)** · **[Suggest an application](.github/ISSUE_TEMPLATE/suggest-app.yml)** · **[How to contribute](CONTRIBUTING.md)**
+**[Explore the searchable website](https://rbraga01.github.io/Raven_Prism-Community_App_Directory/)** · **[View the Google Sheet](https://docs.google.com/spreadsheets/d/1zpmI-z8rMLl50vsgDA0O8s4FfXIWPjRvKly5hzH-t14/edit)** · **[Suggest an application](https://github.com/RBraga01/Raven_Prism-Community_App_Directory/issues/new/choose)** · **[How to contribute](CONTRIBUTING.md)**
 
 > **Independent project.** Not affiliated with or endorsed by Raven Resonance. Listings are not verified hardware compatibility, security certifications or recommendations to install software.
 
