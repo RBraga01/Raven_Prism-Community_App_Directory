@@ -111,7 +111,7 @@ export function catalogInsights(catalog) {
     total: catalog.length,
     categoryCount: categories.size,
     creatorLabels: creators.size,
-    publicDemos: demos,
+    additionalLinks: demos,
     sourceRepositories: repositories.size,
     categories: [...categories].map(([name, count]) => ({ name, count })).sort(byCount),
     availability: [...availability].map(([name, count]) => ({ name, count })).sort(byCount)
