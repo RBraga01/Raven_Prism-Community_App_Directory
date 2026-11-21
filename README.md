@@ -33,7 +33,7 @@ The alphabetical table below is a readable overview. Some entries are official s
 | [DreamLens / Gradient](<https://github.com/Jshengdev/Gradient>) | Developer tools | Jshengdev | Source code |
 | [Ease](<https://github.com/srcJin/raven-ease>) | Wellness | srcJin | Source code |
 | [EgoGaze](<https://github.com/srcJin/raven-ego-gaze>) | Research | srcJin | Source code |
-| [Fireworks Experience](<https://github.com/amirmohideen/raven-ar-glass-experiences-mit/tree/main/fireworks_experience>) | Creative & art | Amir Mohideen | Source code |
+| [Fireworks Experience](<https://github.com/amirmohideen/raven-ar-glass-experiences-mit/tree/main/fireworks_experience>) | Creative & art | Amir Mohideen Basheer Khan | Source code |
 | [Hello World](<https://github.com/RavenResonance/raven-starter-project/tree/main/examples/hello_world>) | Official examples | Raven Resonance | Official example |
 | [Nail AR](<https://github.com/jayasrisng/nail-AR>) | Guides & learning | jayasrisng | Source code |
 | [Nevermore Halloween](<https://github.com/RBraga01/GlassPlay>) | Creative & art | RBraga01 / GlassPlay | Downloadable release |
@@ -43,7 +43,7 @@ The alphabetical table below is a readable overview. Some entries are official s
 | [Raven Pet](<https://github.com/ofranken/RavenPrismTamagotchi>) | Companions | ofranken | Source code |
 | [Raven Reach](<https://github.com/ImJustHenry/Raven-Reach>) | Accessibility | ImJustHenry | Source code |
 | [Simple AI App](<https://github.com/RavenResonance/raven-starter-project/tree/main/examples/simple_ai_app>) | Official examples | Raven Resonance | Official example |
-| [Snake](<https://github.com/amirmohideen/raven-ar-glass-experiences-mit/tree/main/snake_game>) | Games | Amir Mohideen | Source code |
+| [Snake](<https://github.com/amirmohideen/raven-ar-glass-experiences-mit/tree/main/snake_game>) | Games | Amir Mohideen Basheer Khan | Source code |
 | [Webtoon XR](<https://github.com/shreyaadani/WebtoonXR>) | Media | Shreyaa Dani | Source code |
 <!-- END GENERATED APPS -->
 
